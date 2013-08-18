@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>FA - Documentation</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+  <!---CSS Files-->
+  <link rel="stylesheet" href="Production/css/core.css">
+  <link rel="stylesheet" href="Production/css/snippet.css">
+  <link rel="stylesheet" href="Production/css/ui.css">
+  <link rel="stylesheet" href="Production/css/style.css">
+  <!---jQuery Files-->
+  <script src="Production/js/jquery.js"></script>
+  <script src="Production/js/jquery-ui.js"></script>
+  <script src="Production/js/inputs.js"></script>
+  <script src="Production/js/functions.js"></script>
+  <script src="Production/js/snippet.js"></script>
+</head>
+<body>
+
+  <div id="wrapper">
+
+    <!--NAVIGATION-->
+
+    <ul class="box nav-vt">
+      <li class="active"><a href="#intro" class="button black">Introduction</a></li>
+      <li><a href="#struct" class="button black">Structure</a></li>
+      <li><a href="#html" class="button black">HTML</a></li>
+      <li><a href="#inputs" class="button black">Inputs</a></li>
+      <li><a href="#css" class="button black">CSS</a></li>
+      <li><a href="#jquery" class="button black">jQuery</a></li>
+      <li><a href="#cred" class="button black">Assets, credits</a></li>
+    </ul>
+
+    <div id="content" class="doc-page"><!--BEGIN MAIN CONTENT-->
+
+      <div id="intro" class="box g16">
+        <p>By: <span>Alex Nitu (<a href="http://themeforest.net/user/novalex">novalex</a>)</span></p>
+        <p>Created on: <span>05.03.2013</span></p>
+        <p>Version: 1.0</p>
+      </div>
+
+      <h2>Flame Admin - Documentation</h2>
+      <p>
+        Flame Admin is certainly unique. It is the result of months of hard work, thought, and careful tweaking so the end result is a beautiful interface with a powerful jQuery engine.<br><br>
+        Still developing, Flame Admin will continue to be refined and added to, making it better with each update. You should periodically check your Themeforest profile "Downloads" section to see if there are any available updates.<br>
+        Also, feedback and suggestions are welcome and will play a big part in shaping Flame Admin in the future. You can leave them as a comment on the item's page, or send me an email through my <a href="http://themeforest.net/user/novalex">profile page</a>.<br><br>
+        To never see the thank you message again, remove <span class="tag inline">&lt;div id="modal-ov"&gt;</span> just before the wrapper closing tag.<br><br>
+        You must have a local server like <a href="http://www.wampserver.com/en/" target="_blank">WAMP</a> set up for LESS to work. If you don't have one, you can only view the production version of the site with compiled CSS.
+      </p>
+
+      <div class="box g16">
+        <p>I strongly recommend inspecting Flame Admin with your browser's Developer Tools as you're reading the documentation, to better understand its structure and code, and get a visual representation.</p>
+      </div>
+
+      <h2 id="struct">File structure</h2>
+
+      <ul>
+        <li><span>css/ - </span>stylesheet files
+          <ul>
+            <li><span>core.css - </span>reset / normalize, grid, font-faces and responsive code</li>
+            <li><span>elfinder.css - </span>stylesheet for the elFinder file manager</li>
+            <li><span>global.less - </span>helper classes, styles and colors</li>
+            <li><span>login.less - </span>stylesheet for the login pages</li>
+            <li><span>snippet.css - </span>snippet syntax highlighter stylesheet (only used in documentation)</li>
+            <li><span>style.less - </span>main styling and layout stylesheet</li>
+            <li><span>ui.less - </span>styling for UI elements (buttons, widgets, inputs etc.)</li>
+            <li><span>jquery-ui.css - </span>jQuery UI stylesheet, currently only required by elFinder on the extras page</li>
+          </ul>
+        </li>
+        <li><span>img/ - </span>the image directory, of course</li>
+        <li><span>js/ - </span>jQuery files and plugins (detailed file contents in the jQuery section)
+          <ul>
+            <li><span>cleditor.js - </span>WYSIWYG text editor plugin</li>
+            <li><span>datatables.js - </span>DataTables plugin</li>
+            <li><span>elfinder.js - </span>elFinder file manager plugin</li>
+            <li><span>flot.js - </span>Flot chart plotting plugin</li>
+            <li><span>functions.js - </span>global functions and lightweight plugins</li>
+            <li><span>inputs.js - </span>input functions like checkbox, form validation, tooltips, notifications and more</li>
+            <li><span>jquery.js, jquery-ui.js - </span>jQuery and jQuery UI files</li>
+            <li><span>less.js - </span>LESS parser</li>
+            <li><span>minicolors.js - </span>colorpicker plugin</li>
+            <li><span>snippet.js - </span>Snippet syntax highlighter (only used in documentation)</li>
+          </ul>
+        </li>
+        <li><span>res/ - </span>resources like fonts, the PHP files and upload directory for elFinder</li>
+        <li><span>403, 404, 503.html - </span>error pages, the bad news givers of the internet</li>
+        <li><span>analytics.html - </span>lines, bars, pies, donuts (not the delicious kind, though)</li>
+        <li><span>dashboard.html - </span>the homepage, the first page you see after logging in or hacking an account</li>
+        <li><span>extras.html - </span>extras page, growl alerts, typography, data tables, file manager</li>
+        <li><span>grid.html - </span>grid demo - sizes, combinations, nesting</li>
+        <li><span>inputs.html - </span>the inputs page - buttons, selects, tooltips, forms and various fields</li>
+        <li><span>ui.html - </span>UI elements page - accordion, sortable boxes, notifications and more</li>
+        <li><span>index, login-alt, login-sg.html - </span>the login pages (user selection, alternative and single user)</li>
+        <li class="last"><span>recoverpass.html - </span>password recovery page, for when the inevitable happens</li>
+      </ul>
+
+      <div class="box g16">
+        <p>The smaller plugin stylesheets have been included in ui.less, minified plugins have been included in functions.js and inputs.js. Larger plugins and stylesheets are standalone.</p>
+      </div>
+
+      <h2 id="html">HTML</h2>
+
+      <h3>Basic page structure</h3>
+
+      <p>
+        <span class="tag inline first">&lt;div id="wrapper"&gt;</span> - wraps all the page's content, fades in on page load.<br><br>
+        <span class="tag inline first">&lt;div id="nav"&gt;</span> - navigation menu, <span class="tag inline">&lt;div id="wrapper" class="hz-nav"&gt;</span> will make the navigation horizontal.
+      </p>
+
+      <pre class="box g16">
+        &lt;div id="nav"&gt;
+              &lt;ul&gt;
+                      &lt;li class="active"&gt;&lt;span class="icon"&gt;Icon goes here&lt;/span&gt;This is an active menu item&lt;/li&gt;
+                      &lt;li&gt;&lt;a href="link to page"&gt;&lt;/a&gt;&lt;span class="icon"&gt;Icon&lt;/span&gt;This is a basic menu item&lt;/li&gt;
+              &lt;/ul&gt;
+              &lt;br class="clear"&gt;
+        &lt;/div&gt;</pre>
+
+      <p><span class="tag inline first">&lt;div id="content"&gt;</span> - the actual content goes here, and the grid is calculated based on its width. It often has a page class, so content on that page can be easily arranged or styled (helpful for responsive code too).</p>
+
+      <p><span class="tag inline first">&lt;div id="modal-ov"&gt;</span> - the modal window container and overlay. Visible with class <span class="tag inline">show</span>.</p>
+
+      <p><span class="tag inline first">&lt;/div&gt;</span> - end wrapper.</p>
+
+      <hr>
+
+      <h3>Boxes</h3>
+
+      <div class="box g16"><p>Also known as content holders, panels, or "innard restrictors", boxes are containers for elements, text or what have you. There are 2 main types: simple, like this one and with header.</p></div>
+
+      <pre class="box g16">
+        &lt;div class="box"&gt;I'm a simple box&lt;/div&gt;</pre>
+
+      <div class="box no-pad g16">
+        <div class="box-ttl">Box with header</div>
+        <div class="box-body">
+          <pre>
+            &lt;div class="box"&gt;
+                &lt;div class="box-ttl"&gt;I'm a header&lt;/div&gt;
+                &lt;div class="box-body"&gt;
+                    And I'm the body!
+                &lt;/div&gt;
+            &lt;/div&gt;</pre>
+        </div>
+      </div>
+
+      <div class="box g16"><p>Adding class <span class="tag inline">coll</span> to a box will make it collapsible. Adding class <span class="tag inline">collapsed</span> will make it collapsed by default.</p></div>
+
+      <div class="box no-pad coll collapsed g16">
+        <div class="box-ttl">Collapsible box, collapsed by default</div>
+        <div class="box-body pad-top">
+          And now it's not collapsed anymore.
+        </div>
+      </div>
+
+      <div class="box g16">
+        <p>To add an icon to a box header, just append <span class="tag inline">&lt;span class="icon"&gt;icon character here&lt;/span&gt;</span> to it. The same for buttons and button groups (code in the "Inputs" section).<br><br>
+        If you want the icon on the left, add class <span class="tag inline">icon-l</span> to the header.</p>
+      </div>
+
+      <hr>
+
+      <h3>Content navigation</h3>
+
+      <p>
+        The tab-like content navigation is useful when you need to display a lot of information in a restricted space, or you just want to have tabs because you are an adult and can do whatever you want.<br><br>
+        Content is transitioned vertically or horizontally with a sliding animation and fade in/out.<br> The default transition direction is horizontal, to make it vertical add class <span class="tag inline">updown</span> to the nav body. The selected tab gets class <span class="tag inline">sel</span> and its corresponding content gets class <span class="tag inline">show</span>.
+      </p>
+
+      <pre class="box g16">
+        &lt;div class="box nav-box"&gt;
+            &lt;ul class="nav"&gt;
+                &lt;li data-nav="#tab1" class="sel"&gt;Tab 1&lt;/li&gt;
+                &lt;li data-nav="#tab2"&gt;Tab 2&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;div class="nav-body"&gt;
+                &lt;div id="tab1" class="nav-item show"&gt;Tab 1 content.&lt;/div&gt;
+                &lt;div id="tab2" class="nav-item"&gt;Tab 2 content.&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;</pre>
+
+      <p>The tab menu can be positioned on the top (default), left, right or bottom of the box or container. To set the menu position, add one of the classes below to the nav box:</p>
+
+      <ul>
+        <li><span class="tag inline">nav-l</span> - positions the menu to the left.</li>
+        <li><span class="tag inline">nav-r</span> - positions the menu to the right.</li>
+        <li><span class="tag inline">nav-btm</span> - positions the menu to the bottom. Because the menu is not absolutely positioned, it needs to be moved after the nav body in the markup.</li>
+        <li class="no-mg"><span class="tag inline jqtag">$.fn.contNav();</span> - included in $.fn.loadfns();</li>
+      </ul>
+
+      <hr>
+
+      <h3>Modal dialogs</h3>
+
+      <p>A modal dialog's structure is similar to the box. The code below is for a modal with header, body and navigation menu, like the one you can see on every page if you click Settings or User CP.</p>
+
+      <pre class="box g16">
+        &lt;div id="modal-ov"&gt;
+            &lt;div class="modal" id="mod-id"&gt;
+                &lt;div class="mod-ttl"&gt;&lt;h2&gt;MODAL TITLE&lt;/h2&gt;&lt;/div&gt;
+                &lt;div class="mod-body"&gt;
+                    &lt;div id="tab1" class="nav-item show"&gt;Tab 1 content&lt;/div&gt;
+                    &lt;div id="tab2" class="nav-item"&gt;Tab 2 content&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="mod-act"&gt;
+                    &lt;ul class="mod-nav"&gt;
+                        &lt;li class="sel" data-nav="#tab1"&gt;&lt;span class="icon"&gt;ICON&lt;/span&gt;&lt;/li&gt;
+                        &lt;li data-nav="#tab2"&gt;&lt;span class="icon"&gt;ICON&lt;/span&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;button class="orange close"&gt;Close&lt;/button&gt;
+               &lt;/div&gt;
+             &lt;/div&gt;
+        &lt;/div&gt;</pre>
+
+      <p>
+        To show a modal on click, assign an id to the element you want to trigger it and add a <span class="tag inline">data-modal</span> attribute with the id of the target modal. Then, call the modal function with <span class="tag inline jqtag">$('#trigger-id').modal();</span>.<br><br>
+        If the modal's content is tabbed and you want the trigger to show a specific tab, also add the tab id in the <span class="tag inline">data-modal</span> attribute.
+      </p>
+      <pre class="box">&lt;button id="trigger-id" data-modal="#mod-id #tab-id"&gt;Show modal&lt;/button&gt;</pre>
+      <p>
+        When a modal is triggered, both the modal container (#modal-ov) and the triggered modal get class <span class="tag inline">show</span>. Clicking on the modal overlay or a button with class <span class="tag inline">close</span> will hide the modal.
+      </p>
+
+      <hr>
+
+      <h3>Icons</h3>
+
+      <p>
+        To display an icon, just add class <span class="tag inline">icon</span> to the container and insert the character corresponding to the icon you want inside. To give it an inset appearance and dark color add class <span class="tag inline">dark</span>.<br><br>
+        For arrows use class <span class="tag inline">arrow</span> instead.<br><br>
+        You can see the icon and arrow character map in "Icons.jpg".<br><br>
+        To make your own icon font, go to <a href="http://icomoon.io/" target="_blank">IcoMoon</a> and choose from their huge collection of free icons.
+      </p>
+
+      <pre class="box g16">
+        &lt;span class="icon"&gt;X&lt;/span&gt;</pre>
+
+      <hr>
+
+      <h3>Other elements</h3>
+
+      <h4>Tooltips</h4>
+
+      <pre class="box g16">
+        &lt;div class="tooltip"&gt;Tooltip text &lt;span class="arrow"&gt;arrow&lt;/span&gt;&lt;/div&gt;</pre>
+
+      <p>
+        Tooltips can be attached to any element, it just needs class <span class="tag inline">ttip</span> and a title or <span class="tag inline">data-ttip="What you want the tooltip to say"</span> attribute.<br><br>
+        Options can be set with the <span class="tag inline">data-ttip-opt</span> attribute, get added to the tooltip element as classes, and can be the following:
+      </p>
+
+      <ul>
+        <li><span class="tag inline">top</span> - positions tooltip to the top of the element (default).</li>
+        <li><span class="tag inline">left</span> - positions tooltip to the left of the element.</li>
+        <li><span class="tag inline">right</span> - positions tooltip to the right of the element.</li>
+        <li><span class="tag inline">bottom</span> - positions tooltip to the bottom of the element.</li>
+        <li class="no-mg"><span class="tag inline">dark</span> - black tooltip instead of gray.</li>
+      </ul>
+
+      <div class="box g16"><p>jQuery UI's "position" function is used to perfectly align the tooltip to the element, so jquery-ui.js must be included on pages with tooltips.</p></div>
+
+      <h4>Notifications</h4>
+
+      <pre class="box g16">
+        &lt;div class="notif"&gt;
+            Notification text &lt;span class="icon"&gt;Icon&lt;/span&gt;
+            &lt;p class="nt-det"&gt;Notification details&lt;/p&gt;
+        &lt;/div&gt;</pre>
+
+      <p>
+        If a notification contains details (.nt-det) it will expand on first click and close on second. If it doesn't contain details, it will close on first click.
+      </p>
+
+      <ul>
+        <li><span class="tag inline">hide</span> - hides notification.</li>
+        <li><span class="tag inline">auto</span> - sets height to auto.</li>
+        <li><span class="tag inline">no-icon</span> - removes extra padding on the right.</li>
+        <li class="no-mg"><span class="tag inline jqtag">$.fn.notif();</span> - included in $.fn.loadfns();</li>
+      </ul>
+
+      <h4>Growl notifications</h4>
+
+      <p>
+        The growl notifications use toastr. Simple and easy to use, you can create a growl style notification with:
+      </p>
+
+      <pre class="box">
+        toastr.success('Success growl');</pre>
+
+      <p>
+        There are 4 types of growls: success, error, warning and info. You can also give it a title, and set options like position and timeout. The code below demonstrates how to show a growl when a button is clicked:
+      </p>
+
+      <pre class="box">
+        $('#btn').click( function() {
+            toastr.options.positionClass = 'toast-top-left';
+            toastr.error('Shutting down in... now' , 'Error');
+        });</pre>
+
+      <p>The position options are:</p>
+
+      <p>
+        <span class="tag inline">toast-top-right</span> (default), <span class="tag inline">toast-top-left</span>, <span class="tag inline">toast-bottom-right</span>, <span class="tag inline">toast-bottom-left</span>, <span class="tag inline">toast-top-full</span> and <span class="tag inline">toast-bottom-full</span>.
+      </p>
+
+      <h4>Sliders</h4>
+
+      <p>The jQuery UI slider code was modified to keep the handle on the track on line 10309.</p>
+
+      <pre class="box">
+        &lt;div id="slider" class="slider orange"&gt;&lt;/div&gt;</pre>
+
+      <p>To enable the value/grade display, add class <span class="tag inline">grade</span> and call<span class="tag inline jqtag">$('#slider').gradeslider();</span>.<br><br>
+        On horizontal sliders the grade is positioned on the bottom of the slider, adding class <span class="tag inline">grade-top</span> will move it to the top. On vertical sliders the grade is on the left by default, adding class <span class="tag inline">grade-right</span> will move it to the right.</p>
+
+      <hr>
+
+      <h3>The grid</h3>
+
+      <p>Flame's grid is designed to be intuitive, without the need for a lot of markup and classes. Most of the time, all your element needs is a class of g1 to g16. Using CSS calc() enables grid elements to have exact margins in px, not percentages.<br><br>
+        Boxes have a 25px margin on the right and bottom, other elements have 10px. You can use the helper class <span class="tag inline">cont</span> for containers inside boxes.<br><br>
+        In the illustration below, you can see the container padding (green) and its elements' margin (orange). Because of this structure, there is no need for <span class="tag inline">last</span> classes unless the container also has padding on the right.</p>
+
+      <div id="grid-illustr" class="box">
+        <div id="cont-pad-top"></div>
+        <div id="cont-pad-left"></div>
+        <div class="illustr-box">
+          <div class="cont-mg-right"></div>
+          <div class="cont-mg-btm"></div>
+        </div>
+        <div class="illustr-box">
+          <div class="cont-mg-right"></div>
+          <div class="cont-mg-btm"></div>
+        </div>
+      </div>
+
+      <div class="box g16"><p>If your browser does not support CSS calc(), the grid will fall back to a percentage only grid. The wrapper has to have class <span class="tag inline">altgrd</span> for grid elements to have their margins set to percentages instead of pixels, and it gets added on load in functions.js. A percentage only grid is available in the Extended compatibility folder, which must be used with Safari 6, because it crashes with the calc() grid.</p></div>
+
+      <hr>
+
+      <h2 id="inputs">Buttons</h3>
+
+      <p id="colors">Buttons and various other interface elements come in 7 colors:
+        <span class="tag gray inline">gray</span>, <span class="tag red inline">red</span>,
+        <span class="tag blue inline">blue</span>, <span class="tag green inline">green</span>,
+        <span class="tag orange inline">orange</span>, <span class="tag purple inline">purple</span>
+        and <span class="tag inline">black</span>.
+      </p><br><br>
+      <p>
+        There are 4 button sizes: <span class="tag inline">btn-s</span> small (24px), normal (26px), <span class="tag inline">btn-m</span> medium (34px) and <span class="tag inline">btn-l</span> large (38px).<br><br>
+        To add an icon to a button, add class <span class="tag inline">has-icon</span> to it and append the icon you want. Class <span class="tag inline">has-icon-r</span> will move the icon to the right. Class <span class="tag inline">icon2</span> instead of <span class="tag inline">icon</span> will pull the icon down by 2px.<br><br>
+        For buttons that only contain the icon and no text, add class <span class="tag inline">only-icon</span> instead. If the icon is out of alignment, make a <span class="tag inline">&lt;div class="button"&gt;</span> instead of the button element, which ignores the line-height. <br> You can adjust the icon using the font-size and line-height helper classes (detailed in the CSS section). Hover over the blue icon to see the code.<br><br>
+        Adding class <span class="tag inline">toggle</span> will make the button toggleable. Adding class <span class="tag inline">pressed</span> will activate the pressed state.
+      </p>
+
+      <button>&lt;button&gt;&lt;/button&gt;</button>
+      <button class="green">&lt;button class="green"&gt;&lt;/button&gt;</button>
+      <button class="orange btn-m has-icon">
+        &lt;button class="orange btn-m has-icon"&gt;&lt;span class="icon"&gt; &lt; &lt;/span&gt;&lt;/button&gt;
+        <span class="icon">&lt;</span>
+      </button>
+      <button class="black toggle btn-m has-icon-r">
+        class="black toggle btn-m has-icon-r" <span class="icon">?</span>
+      </button>
+      <div class="button blue btn-m only-icon lh-xl ttip" data-ttip="&lt; div class='button blue btn-m only-icon lh-xl'&gt; c &lt; /div&gt;" data-ttip-opt="top dark">c</div>
+
+      <h4>Button groups</h4>
+
+      <div class="box g16"><p>
+          Button groups are very easy to create, just make a div with class <span class="tag inline">btn-group</span> and append the buttons you want grouped to it.<br><br>
+          Adding class <span class="tag inline">btn-radio</span> to a button group will "radio" the buttons.
+        </p>
+      </div>
+
+      <pre class="box">
+        &lt;div class="btn-group"&gt;
+            &lt;button class="btn-m"&gt;Previous&lt;/button&gt;
+            &lt;button class="btn-m"&gt;Next&lt;/button&gt;
+        &lt;/div&gt;</pre>
+
+      <div class="btn-group">
+        <button class="btn-m">Previous</button>
+        <button class="btn-m">Next</button>
+      </div>
+
+      <pre class="box">
+        &lt;div class="btn-group btn-radio"&gt;
+            &lt;button class="btn-m"&gt;This&lt;/button&gt;
+            &lt;button class="btn-m"&gt;No, this&lt;/button&gt;
+        &lt;/div&gt;</pre>
+
+      <div class="btn-group btn-radio">
+        <button class="btn-m">This</button>
+        <button class="btn-m">No, this</button>
+      </div>
+
+      <h4>Input groups</h4>
+
+      <div class="box g16"><p>
+          You can add buttons to the left and/or right of a text input using an input group. jQuery is used to calculate the width of the input, so <span class="tag inline">$.fn.inputgrp();</span> must be called inside $.fn.loadfns() (details in the jQuery section).
+        </p>
+      </div>
+
+      <pre class="box g16">
+        &lt;div class="input-group"&gt;
+            &lt;button class="black input-comp"&gt;Left Button&lt;/button&gt;
+            &lt;input type="text" value="The input"&gt;
+            &lt;button class="blue input-comp"&gt;Right Button&lt;/button&gt;
+            &lt;button class="green input-comp"&gt;RB 2&lt;/button&gt;
+            &lt;button class="input-comp"&gt;RB 3&lt;/button&gt;
+        &lt;/div&gt;</pre>
+
+      <div class="box input-group pad-s g16">
+        <button class="black input-comp">Left Button</button>
+        <input type="text" class="no-mg-btm" value="The input">
+        <button class="blue input-comp">Right Button</button>
+        <button class="green input-comp">RB 2</button>
+        <button class="input-comp">RB 3</button>
+      </div>
+
+      <hr>
+
+      <h2>Inputs</h2>
+
+      <div class="box g16"><p>Inputs are very easy to create and manipulate. Those that need explaining are explained here, and the classes they can be given are listed below them (as well as the jQuery call, if any, in a gray tag).<br><br>
+        All inputs are shown on the <a href="Production/inputs.html" target="_blank">inputs page</a>, so check it out if you haven't yet.
+        </p>
+      </div>
+
+      <h4>Text fields</h4>
+
+      <div class="box pre-cont g16">
+        <pre>&lt;input type="text" value="Basic text input"&gt;</pre>
+        <input type="text" value="Basic text input">
+      </div>
+
+      <ul>
+        <li><span class="tag inline">number</span> - only numbers can be entered</li>
+        <li><span class="tag inline">inset</span> - inset appearance, like a box</li>
+        <li><span class="tag inline">valid</span> - valid input, green box-shadow is added</li>
+        <li class="no-mg"><span class="tag inline">error</span> - invalid input, red box-shadow is added</li>
+      </ul>
+
+      <h4>Spinner</h4>
+
+      <div class="box pre-cont g16">
+        <pre>&lt;input type="text" class="spinner" placeholder="Spinner"&gt;</pre>
+        <input type="text" class="spinner" placeholder="Spinner">
+      </div>
+
+      <ul>
+        <li><span class="tag inline">big-btn</span> - big buttons</li>
+        <li class="no-mg"><span class="tag inline jqtag">$.fn.numberInp();</span> - also required for number inputs, included in $.fn.inputs();</li>
+      </ul>
+
+      <h4>File select</h4>
+
+      <div class="box pre-cont g16">
+        <pre>
+          &lt;div class="file-sel"&gt;
+              &lt;input type="file" class="file"&gt;
+          &lt;/div&gt;</pre>
+        <div class="file-sel">
+          <input type="file" class="file">
+        </div>
+      </div>
+
+      <p><span class="tag inline jqtag">$.fn.fileSel();</span> - included in $.fn.inputs();</p>
+
+      <h4>Drops</h4>
+
+      <div class="box pre-cont g16">
+        <p class="details">There are 2 types of drops: single button or split button.</p>
+        <pre class="mg-top">
+        &lt;div class="drop single"&gt;
+            &lt;button class="btn-m black"&gt;Dropdown &lt;span class="arrow"&gt;&amp;&lt;/span&gt;&lt;/button&gt;
+            &lt;ul&gt;
+                &lt;li&gt;Option 1&lt;/li&gt;
+                &lt;li&gt;Option 2&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;</pre>
+        <div class="drop single">
+          <button class="btn-m black">Dropdown <span class="arrow">&amp;</span></button>
+          <ul>
+            <li>Option 1</li>
+            <li>Option 2</li>
+          </ul>
+        </div>
+        <br class="clear">
+        <pre>
+        &lt;div class="drop"&gt;
+            &lt;button class="btn-m black"&gt;Dropdown&lt;/button&gt;
+            &lt;button class="btn-m black arrow"&gt;&amp;&lt;/button&gt;
+            &lt;ul&gt;...&lt;/ul&gt;
+        &lt;/div&gt;</pre>
+        <div class="drop">
+          <button class="btn-m black">Dropdown</button>
+          <button class="btn-m black arrow">&amp;</button>
+          <ul>
+            <li>Option 1</li>
+            <li>Option 2</li>
+          </ul>
+        </div>
+      </div>
+
+      <ul>
+        <li><span class="tag inline">al-r</span> - aligns the drop menu to the right of the button</li>
+        <li><span class="tag inline">arrow-l</span> - moves arrow to the left</li>
+        <li><span class="tag inline">drop-l</span> - sets drop direction to the left</li>
+        <li><span class="tag inline">drop-r</span> - sets drop direction to the right</li>
+        <li><span class="tag inline">drop-u</span> - sets drop direction upward</li>
+        <li class="no-mg"><span class="tag inline jqtag">$.fn.btnDrop();</span> - included in $.fn.inputs();</li>
+      </ul>
+
+      <div class="box g16">
+        <p>Direction classes can be combined for more drop directions. For instance, <span class="tag inline">drop-l drop-u</span> will set the drop direction up and to the left.</p>
+      </div>
+
+      <h4>Select</h4>
+
+      <div class="box pre-cont g16">
+        <pre>
+        &lt;select&gt;
+            &lt;option&gt;Select&lt;/option&gt;
+            &lt;option&gt;An&lt;/option&gt;
+            &lt;option&gt;Option&lt;/option&gt;
+        &lt;/select&gt;</pre>
+        <p class="details">Selects are transformed into the following HTML structure, to allow full customization:</p>
+        <pre class="mg-top">
+        &lt;div class="drop select"&gt;
+            &lt;select style="display: none;"&gt;...&lt;/select&gt;
+            &lt;ul&gt;
+                &lt;li class="sel"&gt;Select&lt;/li&gt;
+                &lt;li&gt;An&lt;/li&gt;
+                &lt;li&gt;Option&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;span class="opt-sel"&gt;Select&lt;/span&gt;
+            &lt;span class="arrow"&gt;&amp;&lt;/span&gt;
+        &lt;/div&gt;</pre>
+        <p class="details">
+          <span class="tag inline first">&lt;span class="opt-sel"&gt;</span> displays the selected option's value. If no option is selected, it gets the value of the first option.<br><br>
+          When an option is selected, it gets the <span class="tag inline">selected</span> attribute added and its corresponding &lt;li&gt; gets class <span class="tag inline">sel</span>.
+        </p>
+        <select>
+          <option>Select</option>
+          <option>An</option>
+          <option>Option</option>
+        </select>
+      </div>
+
+      <ul>
+        <li><span class="tag inline">multiple</span> - allows for multiple options to be selected, listed as tags</li>
+        <li><span class="tag inline">no-arrow</span> - the arrow will not be added to the HTML</li>
+        <li><span class="tag inline">has-delete</span> - adds clear button for resetting the select</li>
+        <li><span class="tag inline">disabled</span> - disables transformed select, gets added if the select has attribute 'disabled'.</li>
+        <li><span class="tag inline jqtag">$.fn.makeSelect();</span> - transforms selects into the custom HTML structure, included in $.fn.loadfns(); (runs on load).</li>
+        <li class="no-mg"><span class="tag inline jqtag">$.fn.flselect();</span> - provides functionality for transformed selects, called by $.fn.makeSelect(); , included in $.fn.inputs();</li>
+      </ul>
+
+      <h4>Checkboxes</h4>
+
+      <div class="box pre-cont g16">
+        <pre>
+        &lt;input type="checkbox" class="chbox-mini"&gt;</pre>
+        <input type="checkbox" class="chbox-mini mg-top">
+        <pre>
+        &lt;input type="checkbox" class="chbox"&gt;</pre>
+        <input type="checkbox" class="chbox mg-top">
+        <span class="details">Like selects, checkboxes get transformed into the following HTML structure:</span>
+        <pre>
+          &lt;div class="checkbox-cont unchecked chbox"&gt;
+              &lt;input type="checkbox" class="chbox" style="display: none;"&gt;
+              &lt;div class="on"&gt;&lt;span&gt;=&lt;/span&gt;&lt;/div&gt;
+              &lt;div class="off"&gt;&lt;span&gt;X&lt;/span&gt;&lt;/div&gt;
+              &lt;div class="check-mask"&gt;&lt;/div&gt;
+          &lt;/div&gt;</pre>
+        <span class="details">Mini checkboxes are turned into:</span>
+        <pre>
+          &lt;div class="checkbox-cont unchecked chbox-mini"&gt;
+              &lt;input type="checkbox" class="chbox-mini" style="display: none;"&gt;
+              &lt;div class="on"&gt;&lt;span&gt;=&lt;/span&gt;&lt;/div&gt;
+          &lt;/div&gt;</pre>
+      </div>
+
+      <ul>
+        <li><span class="tag inline">disabled</span> - disables transformed checkbox, gets added if the checkbox has attribute 'disabled'.</li>
+        <li><span class="tag inline">light-bg</span> - changes box-shadows and makes the checkbox inset, for light backgrounds.</li>
+        <li class="no-mg"><span class="tag inline jqtag">$('.chbox, .chbox-mini').flcheck();</span> - included in $.fn.loadfns();</li>
+      </ul>
+
+      <h4>Form validation</h4>
+
+      <div class="box g16">
+        <p>Flame's validation code is based on <a href="https://github.com/nicholasbs/jquery-tiny-validation" target="_blank">jQuery Tiny Validation</a>, but most of the code has been written from scratch. The inputs that can be validated as required are text inputs, selects, checkboxes and spinners. Text input validation options include e-mail, card number or matching fields (for passwords, etc), and can be set a minimum number of characters with the <span class="tag inline">data-min="x"</span> attribute. Each input type has a custom error message, and text inputs have one for each option.<br><br>
+          To validate a form, assign an id to it and add one of the classes below to the inputs in the form you want validated. Finally, call the jQuery validate function <span class="tag inline jqtag">$('#form-id').validate();</span>.
+        </p>
+      </div>
+
+      <ul>
+        <li><span class="tag inline">required</span> - makes input required, form will not submit until it is valid.</li>
+        <li><span class="tag inline">email</span> - requires a valid e-mail address format (xyz@xyz.xyz) to be entered.</li>
+        <li><span class="tag inline">cardnum</span> - requires a valid credit card number format to be entered.</li>
+        <li class="no-mg"><span class="tag inline">match</span> - requires two inputs to match (each must have this class, and a <span class="tag inline">data-match="same-for-every-input-in-set"</span> attribute.</li>
+      </ul>
+
+      <hr>
+
+      <h2 id="css">CSS</h2>
+
+      <p>This section will explain the CSS, the stuff that gives Flame its darn good looks and animates most of it.<br>
+      Each file will have the classes and IDs that need explaining listed below, and a description. The CSS code is organized by elements and each part is labeled, so finding and customizing what you need should be a piece of cake.<br>
+      <a href="http://lesscss.org" target="_blank">LESS</a> makes the CSS more easily manageable, and it has other perks too. If you are unfamilliar with it, I recommend taking a look at their website, to get the basics of it.<br><br>
+      To compile LESS files, you will need a compiling tool. <a href="http://winless.org/" target="_blank">WinLESS</a> is one of them, but more can be easily found, just take your pick.<br><br>
+      The compiled "style.css" file will contain the global and ui files as well. You can either delete the code until the /* FLAME STYLE.LESS */ comment and make separate files with @import tags (be sure to change the extension to .css instead of .less), or keep it that way and not import the global and ui stylesheet.</p>
+
+      <h4>core.css</h4>
+
+      <p>Contains reset/normalize code, page load spinner, font-faces, the grid and responsive code.</p>
+
+      <ul>
+        <li><span class="tag inline">#load</span> - page load spinner container
+          <ul>
+            <li class="no-mg"><span class="tag inline">#spinner</span> - the spinner image, rotates</li>
+          </ul>
+        </li>
+      </ul>
+
+      <hr>
+
+      <h4>style.less</h4>
+
+      <ul>
+        <li><span class="tag inline">#wrapper</span>
+          <ul>
+            <li><span class="tag inline">&amp;.hz-nav</span> - adding this class to the wrapper will make the navigation menu horizontal</li>
+            <li><span class="tag inline">&amp;.abs-nav</span> - absolutely positions navigation (automatically added if the window height is below 674px)</li>
+            <li><span class="tag inline">&amp;.fixed</span> - fixes wrapper, added when a modal is shown to prevent accidental body scrolling</li>
+          </ul>
+        </li>
+        <li><span class="tag inline">#usr-panel</span> - the user panel, and your avatar (you handsome devil)
+          <ul>
+            <li><span class="tag inline">#usr-info</span> - fades in when the avatar is hovered</li>
+          </ul>
+        </li>
+         <li><span class="tag inline">#nav</span> - the navigation menu
+          <ul>
+            <li><span class="tag inline">#logout</span> - the logout button</li>
+          </ul>
+        </li>
+        <li><span class="tag inline">#stats-cont</span> - first box on the dashboard</li>
+        <li><span class="tag inline">#users-cont</span> - user management box
+          <ul>
+            <li><span class="tag inline">.generated</span> - class for &lt;li&gt;s created by the add user button</li>
+          </ul>
+        </li>
+        <li><span class="tag inline">.conv</span> - conversation (chat) element</li>
+        <li><span class="tag inline">#ind-cont</span> - the dashboard box with progressbars and donuts
+          <ul>
+            <li><span class="tag inline">.line-ind</span> - class for the progressbar body</li>
+            <li><span class="tag inline">.line</span> - class for the progress bar itself</li>
+            <li><span class="tag inline">.line-desc</span> - class for the progressbar description</li>
+          </ul>
+        </li>
+        <li><span class="tag inline">#bk-mng</span> - the backup manager
+          <ul>
+            <li><span class="tag inline">.bk-act</span> - backup item action, pulled right</li>
+            <li><span class="tag inline">.bk-opt</span> - backup options, 1/3rd width</li>
+            <li><span class="tag inline">#rmt</span> - remote backup item</li>
+            <li><span class="tag inline">#rmt-sp</span> - remote free space progressbar item</li>
+            <li><span class="tag inline">#bk-off</span> - The dark overlay that covers the backup options when automatic backup is turned off</li>
+          </ul>
+        </li>
+        <li class="no-mg"><span class="tag inline">#mod-home, #usr-det, #mod-conv</span> - styling for the modal sections</li>
+      </ul>
+
+      <hr>
+
+      <h4>global.less</h4>
+
+      <p>Contains helper classes like floats, margin, padding, border-radius, gradients and colors. The code is pretty much self explanatory, reading through it should give you an idea of what each class does.</p>
+
+      <hr>
+
+      <h4>login.less</h4>
+
+      <p>Contains the code for the 3 login pages.</p>
+
+       <ul>
+        <li><span class="tag inline">#quick-lg</span> - the password box that appears on user click
+          <ul>
+            <li><span class="tag inline">#field</span> - password input's container
+              <ul>
+                <li><span class="tag inline">#quick-input</span> - password input</li>
+                <li><span class="tag inline">#placeholder</span> - placeholder text</li>
+              </ul>
+            </li>
+            <li><span class="tag inline">#forgot-psw</span> - forgot password link</li>
+            <li><span class="tag inline">#lg-submit</span> - login button</li>
+          </ul>
+        </li>
+        <li><span class="tag inline">#lg-overlay</span> - dark overlay for the password box</li>
+        <li><span class="tag inline">#users</span> - the users container</li>
+        <li><span class="tag inline">.av-overlay</span> - the overlay that fades in when a user is hovered</li>
+        <li><span class="tag inline">.av-tooltip</span> - the user name tooltip</li>
+      </ul>
+
+      <ul>
+        <li class="no-mg"><span class="tag inline">#body</span> - alternative login box
+          <ul>
+            <li><span class="tag inline">#lg-input</span> - username and password fields container
+              <ul>
+                <li><span class="tag inline">#usr-li</span> - username input container</li>
+                <li><span class="tag inline">#psw-li</span> - password input container</li>
+              </ul>
+            </li>
+            <li><span class="tag inline">.rb-check</span> - 'remember me' checkbox</li>
+            <li><span class="tag inline">#rb-label</span> - 'remember me' label</li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul>
+        <li class="no-mg"><span class="tag inline">#usr</span> - contains the avatar, welcome back message (#usr-info) and checkbox of the single user login
+        </li>
+      </ul>
+
+      <hr>
+
+      <h4>ui.less</h4>
+
+      <p>Contains the code for widgets, buttons and inputs, tooltips and other UI elements.</p>
+
+      <ul>
+        <li><span class="tag inline">.checkbox-cont</span> - checkbox container
+          <ul>
+            <li><span class="tag inline">.on</span> - checked state orange tick</li>
+            <li><span class="tag inline">.off</span> - unchecked state X</li>
+            <li><span class="tag inline">.check-mask</span> - checkbox mask</li>
+          </ul>
+        </li>
+        <li><span class="tag inline">.tooltip</span> - tooltips</li>
+        <li><span class="tag inline">.btn-set-btm</span> - button container, absolutely positioned to bottom</li>
+        <li><span class="tag inline">.drop</span> - dropdown/up/left/right</li>
+        <li><span class="tag inline">.input-error</span> - the 'X' added to invalid inputs</li>
+        <li><span class="tag inline">.ul-grad</span> - styled &lt;ul&gt; with gradient</li>
+        <li><span class="tag inline">.ul-inline</span> - styled inline &lt;ul&gt; with gradient</li>
+        <li><span class="tag inline">.nav-hz</span> - horizontal navigation, like on the inputs page</li>
+        <li><span class="tag inline">.nav-vt</span> - vertical navigation, like the one on this page</li>
+        <li><span class="tag inline">.nav-item</span> - content navigation item</li>
+        <li><span class="tag inline">.unread-ind</span> - unread alerts or notifications tag</li>
+        <li class="no-mg"><span class="tag inline">.sel-tag</span> - multiple select tag</li>
+      </ul>
+
+      <hr>
+
+      <h2 id="jquery">jQuery</h2>
+
+      <h4>functions.js</h4>
+
+      <ul>
+        <li><span class="tag inline first jqtag">$.fn.togglefn()</span> - toggles a class on the target on click. Trigger needs a <span class="tag inline">data-tgcls="#target class"</span> attribute. Automatically called on elements with class <span class="tag inline">tgcls</span> in $.fn.loadfns();</li>
+        <li><span class="tag inline first jqtag">$.fn.contNav()</span> - the content navigation function. If the element contains .nav-act, the wizard steps function is called to disable previous/next buttons when first/last tab is reached. Called on load in $.fn.loadfns();</li>
+        <li><span class="tag inline first jqtag">$.fn.boxColl()</span> - the box collapse function. The box height is added as a <span class="tag inline">data-height</span> attribute for easy access. Called on load in $.fn.loadfns();</li>
+        <li><span class="tag inline first jqtag">$.fn.flaccordion()</span> - the custom accordion function. Simpler than the jQuery UI one, and animates smoothly, without shaking. Called like: $('#accordion').flaccordion();</li>
+        <li class="no-mg"><span class="tag inline first jqtag">$.fn.loadfns()</span> - the page load and global calls function. Also contains the function for absolutely positioning the navigation when the window height is below 674px and for showing the minified nav on click. If a page has functions that must be called on load, include them in the parameter as a function.</li>
+      </ul>
+
+      <pre class="box g16">
+      $.fn.loadfns( function() {
+          $.fn.calledOnLoad();
+          $('.on-load').iAmCalled();
+      };</pre>
+
+      <hr>
+
+      <h4>inputs.js</h4>
+
+      <ul>
+        <li><span class="tag inline jqtag">$.fn.flcheck()</span> - the checkbox function, included in $.fn.loadfns();</li>
+        <li><span class="tag inline jqtag">$.fn.loginNotif()</span> - function for the login pages notifications</li>
+        <li><span class="tag inline jqtag">$.fn.notif()</span> - notification function, included in $.fn.loadfns();</li>
+        <li><span class="tag inline jqtag">$.fn.scrollspy()</span> - scrollspy function, as seen on the inputs and documentation pages.</li>
+        <li><span class="tag inline jqtag">$.fn.tooltip()</span> - tooltip function, automatically called on elements with class <span class="tag inline">ttip</span> in $.fn.loadfns();</li>
+        <li><span class="tag inline jqtag">$.fn.btnDrop()</span> - drop function for selects and drops, included in $.fn.inputs();</li>
+        <li><span class="tag inline jqtag">$.fn.flselect()</span> - function for selects and multiple selects, included in $.fn.inputs();</li>
+        <li><span class="tag inline jqtag">$.fn.makeSelect()</span> - function for transforming selects into the custom HTML structure, included in $.fn.loadfns();</li>
+        <li><span class="tag inline jqtag">$.fn.closeOnBlur()</span> - function for closing selects and drops when clicking outside or on another select/drop</li>
+        <li><span class="tag inline jqtag">$.fn.validate()</span> - function for validating forms. Has a function for each input type</li>
+        <li><span class="tag inline jqtag">$.fn.validateLogin()</span> - function for validating the login pages inputs</li>
+        <li><span class="tag inline jqtag">$.fn.numberInp()</span> - function for number only inputs (class <span class="tag inline">number</span>) and spinners (class <span class="tag inline">spinner</span>), included in $.fn.inputs();</li>
+        <li><span class="tag inline jqtag">$.fn.inputgrp()</span> - function for input groups, should be called on load to properly detect the width</li>
+        <li><span class="tag inline jqtag">$.fn.gradeslider()</span> - function for sliders with value/grade display</li>
+        <li><span class="tag inline jqtag">$.fn.inputs()</span> - global function containing frequently used input function calls, and the input delete (clear) function</li>
+        <li class="no-mg"><span class="tag inline jqtag">$.fn.btnfns()</span> - toggle and radio button function</li>
+      </ul>
+
+      <hr>
+
+      <h2 id="cred">Assets, plugins and credits</h2>
+
+      <ul>
+        <li><a href="http://premiumsoftware.net/cleditor/" target="_blank">CLEditor</a> - WYSIWYG text editor</li>
+        <li><a href="http://www.datatables.net" target="_blank">DataTables</a></li>
+        <li><a href="https://github.com/Studio-42/elFinder" target="_blank">elFinder</a> - file manager</li>
+        <li><a href="https://github.com/flot/flot" target="_blank">Flot</a> - analystics, chart plotting</li>
+        <li><a href="https://github.com/glad/glDatePicker" target="_blank">glDatePicker</a> - calendar</li>
+        <li><a href="http://cherne.net/brian/resources/jquery.hoverIntent.html" target="_blank">hoverIntent</a> - hover intent plugin</li>
+        <li><a href="https://github.com/carhartl/jquery-cookie" target="_blank">jQuery Cookie</a> - cookie setting/reading plugin</li>
+        <li><a href="https://github.com/aterrien/jQuery-Knob" target="_blank">jQuery Knob</a></li>
+        <li><a href="https://github.com/claviska/jquery-miniColors/" target="_blank">jQuery Minicolors</a> - color picker</li>
+        <li><a href="http://digitalbush.com/projects/masked-input-plugin/" target="_blank">Masked Input</a> - input mask plugin</li>
+        <li><a href="http://jamesflorentino.github.com/nanoScrollerJS/" target="_blank">nanoScroller</a> - scrollbar plugin</li>
+        <li><a href="http://jsfiddle.net/mekwall/up4nu/" target="_blank">Scrollspy</a></li>
+        <li><a href="http://www.steamdev.com/snippet/" target="_blank">Snippet</a> - syntax highlight plugin</li>
+        <li><a href="https://github.com/nicholasbs/jquery-tiny-validation" target="_blank">Tiny Validation</a> - Flame's form validation is based on this plugin</li>
+        <li class="no-mg"><a href="https://github.com/CodeSeven/toastr" target="_blank">Toastr</a> - growl-style notifications plugin</li>
+      </ul>
+
+      <p>
+        jQuery Knob, toastr, jQuery Cookie, CLEditor, jQuery Minicolors, nanoScroller, glDatePicker and Snippet are released under the <span class="bold">MIT License</span>:
+      </p>
+
+      <div class="box g16"><p>
+        Permission is hereby granted, free of charge, to any person obtaining a copy of this software and<br> associated documentation files (the "Software"), to deal in the Software without restriction, including<br> without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<br> copies of the Software, and to permit persons to whom the Software is furnished to do so, subject<br> to the following conditions:<br><br>
+        The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+      </p></div>
+
+      <p>
+        All images, plugins and fonts are copyright of their respective authors.<br><br>
+        The icon font has been created with the <a href="http://icomoon.io/app" target="_blank">icomoon App</a>, and contains icons from the iconSweets pack (by <a href="http://www.yummygum.com" target="_blank">Yummygum</a>), and from other icon sets.<br><br>
+        Special thanks to the <a href="http://stackoverflow.com" target="_blank">Stack Overflow</a> community, where I could always find help whenever I hit a bump, Themeforest and the Envato community, and the internet.
+      </p>
+
+    </div><!--END MAIN CONTENT-->
+
+    <div id="modal-ov" class="show">
+      <div id="thank-you" class="modal show">
+        <div class="mod-body pad al-c"><h2>Thank You!</h2>
+        <p>for purchasing Flame Admin</p></div>
+      </div>
+    </div>
+
+  </div><!--END WRAPPER-->
+
+  <span id="load">
+    <img src="Production/img/load.png"><img src="Production/img/spinner.png" id="spinner">
+  </span>
+
+  <!---jQuery Code-->
+  <script type='text/javascript'>
+
+    // LOAD FUNCTIONS
+
+    $.fn.loadfns( function() {
+      $.fn.inputgrp();
+      $('pre').snippet("html",{style:"flame"});
+    });
+
+    $.fn.inputs();
+
+    $('#modal-ov').click( function() {
+      $.removeCookie('modal-shown');
+      $.cookie('modal-shown', 'true', { expires: 7 });
+    });
+
+    if ($.cookie('modal-shown') == 'true') $('#modal-ov').removeClass('show');
+
+    $('.nav-vt').scrollspy();
+
+  </script>
+</body>
+</html>
