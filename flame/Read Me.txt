@@ -1,0 +1,9 @@
+The Production folder contains compiled CSS files.
+
+The Development folder contains LESS files,
+but you will need a local server (like WAMP) for the less.js parser to work.
+
+The Extended compatibility folder contains the
+alternative grid (without CSS calc, for older browsers and Safari 6) "alt-core.css" file and the IE8 compatible version.
+
+Be sure to give the Documentation a read!
